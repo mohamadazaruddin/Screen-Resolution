@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Screen Resolution</title>
+</head>
+<style>
+    * {
+        margin: 0 auto;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+
+    .main {
+        background: rgb(96, 55, 233);
+        background: linear-gradient(90deg, rgba(96, 55, 233, 1) 0%, rgba(150, 77, 234, 1) 41%, rgba(65, 105, 235, 1) 76%, rgba(44, 188, 238, 1) 100%);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .center {
+        background: aliceblue;
+        width: 280px;
+        /* height: 116px; */
+        text-align: center;
+        position: relative;
+        box-shadow: 0 0 15px #19193b;
+        border-radius: 10px
+    }
+
+    .details {
+        background: #760bff;
+        width: 100%;
+        color: white;
+        display: flex;
+        font-size: 12px;
+        border-bottom-left-radius: 8px;
+        padding: 5px 0;
+        border-bottom-right-radius: 8px;
+        line-height: 25px;
+    }
+
+    .differenciate {
+        width: 70%;
+        text-align: left;
+    }
+
+    .head-text {
+        background: #760bff;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding: 5px 0;
+        color: white;
+    }
+
+    #view {
+        font-size: 40px;
+        font-weight: 600;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    #devices {
+        text-align: center;
+        margin: 10px 0;
+        font-weight: 600;
+        font-size: 18px;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="content">
+            <div class="center">
+                <div class="head-text">
+                    <p class="permanant-text">
+                        Your Screen Resolution is :
+                    </p>
+                </div>
+                <p id="view"></p>
+                <div class="details">
+                    <div class="differenciate">
+                        <p> <span>
+                                Width : <span id="showwidth"></span>
+                            </span>&nbsp;&nbsp;
+                            <span>
+                                Height : <span id="showheight"></span>
+                            </span>
+                        </p>
+                        <p>
+                            <span>
+                                Device : <span id="userdevice"></span>
+                            </span>&nbsp;&nbsp;
+                        </p>
+                        <p> <span>
+                                Browser : <span id="userbrowser"></span>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="sharethis" onclick="shareme()"><i class="fas fa-share-alt"></i></div>
+                </div>
+            </div>
+            <p id="devices">
+            </p>
+        </div>
+    </div>
+    <script>
+        let myscreenwidth = window.screen.width;
+        let myscreenheight = window.screen.height;
+        document.getElementById("view").innerHTML = myscreenwidth + " " + "x" + " " +
+            myscreenheight;
+        document.getElementById("showwidth").innerHTML = myscreenwidth + "px";
+        document.getElementById("showheight").innerHTML = myscreenheight + "px";
+        if (myscreenwidth > 768) {
+            document.getElementById("devices").innerHTML = "I Think you are on desktop ! ";
+
+        } else {
+            document.getElementById("devices").innerHTML = "I Think you are on Mobile ! ";
+        }
+
+
+        function shareme() {
+            const siteurl = window.document.location.href;
+
+
+            if (navigator.share) {
+                navigator.share({
+                        title: 'Konw Your Screen Resolution!',
+                        text: 'Check Your Screen Resolution',
+                        url: siteurl
+                    }).then(() => {
+                        console.log('Thanks for sharing!');
+                    })
+                    .catch(err => {
+                        console.log(`Couldn't share because of`, err.message);
+                    });
+            } else {
+                console.log('web share not supported');
+            }
+        }
+
+        (function () {
+            'use strict';
+
+            var module = {
+                options: [],
+                header: [navigator.platform, navigator.userAgent, navigator.appVersion, navigator.vendor, window
+                    .opera
+                ],
+                dataos: [{
+                        name: 'Windows Phone',
+                        value: 'Windows Phone',
+                        version: 'OS'
+                    },
+                    {
+                        name: 'Windows',
+                        value: 'Win',
+                        version: 'NT'
+                    },
+                    {
+                        name: 'iPhone',
+                        value: 'iPhone',
+                        version: 'OS'
+                    },
+                    {
+                        name: 'iPad',
+                        value: 'iPad',
+                        version: 'OS'
+                    },
+                    {
+                        name: 'Kindle',
+                        value: 'Silk',
+                        version: 'Silk'
+                    },
+                    {
+                        name: 'Android',
+                        value: 'Android',
+                        version: 'Android'
+                    },
+                    {
+                        name: 'PlayBook',
+                        value: 'PlayBook',
+                        version: 'OS'
+                    },
+                    {
+                        name: 'BlackBerry',
+                        value: 'BlackBerry',
+                        version: '/'
+                    },
+                    {
+                        name: 'Macintosh',
+                        value: 'Mac',
+                        version: 'OS X'
+                    },
+                    {
+                        name: 'Linux',
+                        value: 'Linux',
+                        version: 'rv'
+                    },
+                    {
+                        name: 'Palm',
+                        value: 'Palm',
+                        version: 'PalmOS'
+                    }
+                ],
+                databrowser: [{
+                        name: 'Chrome',
+                        value: 'Chrome',
+                        version: 'Chrome'
+                    },
+                    {
+                        name: 'Firefox',
+                        value: 'Firefox',
+                        version: 'Firefox'
+                    },
+                    {
+                        name: 'Safari',
+                        value: 'Safari',
+                        version: 'Version'
+                    },
+                    {
+                        name: 'Internet Explorer',
+                        value: 'MSIE',
+                        version: 'MSIE'
+                    },
+                    {
+                        name: 'Opera',
+                        value: 'Opera',
+                        version: 'Opera'
+                    },
+                    {
+                        name: 'BlackBerry',
+                        value: 'CLDC',
+                        version: 'CLDC'
+                    },
+                    {
+                        name: 'Mozilla',
+                        value: 'Mozilla',
+                        version: 'Mozilla'
+                    }
+                ],
+                init: function () {
+                    var agent = this.header.join(' '),
+                        os = this.matchItem(agent, this.dataos),
+                        browser = this.matchItem(agent, this.databrowser);
+
+                    return {
+                        os: os,
+                        browser: browser
+                    };
+                },
+                matchItem: function (string, data) {
+                    var i = 0,
+                        j = 0,
+                        html = '',
+                        regex,
+                        regexv,
+                        match,
+                        matches,
+                        version;
+
+                    for (i = 0; i < data.length; i += 1) {
+                        regex = new RegExp(data[i].value, 'i');
+                        match = regex.test(string);
+                        if (match) {
+                            regexv = new RegExp(data[i].version + '[- /:;]([\\d._]+)', 'i');
+                            matches = string.match(regexv);
+                            version = '';
+                            if (matches) {
+                                if (matches[1]) {
+                                    matches = matches[1];
+                                }
+                            }
+                            if (matches) {
+                                matches = matches.split(/[._]+/);
+                                for (j = 0; j < matches.length; j += 1) {
+                                    if (j === 0) {
+                                        version += matches[j] + '.';
+                                    } else {
+                                        version += matches[j];
+                                    }
+                                }
+                            } else {
+                                version = '0';
+                            }
+                            return {
+                                name: data[i].name,
+                                version: parseFloat(version)
+                            };
+                        }
+                    }
+                    return {
+                        name: 'unknown',
+                        version: 0
+                    };
+                }
+            };
+
+            var e = module.init(),
+
+                userdevicevalue = e.os.name + " " + e.os.version;
+            document.getElementById("userdevice").innerHTML = userdevicevalue;
+            var f = module.init(),
+                userbrowservalue = e.browser.name + " " + e.browser.version;
+
+            document.getElementById("userbrowser").innerHTML = userbrowservalue;
+
+        }());
+    </script>
+</body>
+
+</html>
