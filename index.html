@@ -17,6 +17,7 @@
     }
 
     .main {
+
         background: rgb(96, 55, 233);
         width: 100%;
         height: 100vh;
@@ -124,7 +125,6 @@
         } else {
             document.getElementById("devices").innerHTML = "I Think you are on Mobile ! ";
         }
-
 
         function shareme() {
             const siteurl = window.document.location.href;
@@ -303,7 +303,6 @@
                 }
             };
             var e = module.init(),
-
                 userdevicevalue = e.os.name + " " + e.os.version;
             document.getElementById("userdevice").innerHTML = userdevicevalue;
             var f = module.init(),
